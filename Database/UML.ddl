@@ -1,0 +1,16 @@
+ALTER TABLE `Problema` DROP FOREIGN KEY `informa`;
+ALTER TABLE `Problema` DROP FOREIGN KEY `resuelve`;
+ALTER TABLE `EvaluacionServicio` DROP FOREIGN KEY `evalua`;
+ALTER TABLE `Problema` DROP FOREIGN KEY `obtiene`;
+DROP TABLE IF EXISTS `Cliente`;
+DROP TABLE IF EXISTS `Trabajador`;
+DROP TABLE IF EXISTS `Problema`;
+DROP TABLE IF EXISTS `EvaluacionServicio`;
+CREATE TABLE `Cliente` (`ClienteID` int(10) NOT NULL AUTO_INCREMENT, `ClienteUsuario` varchar(255), `ClienteContrasena` varchar(255), `ClienteNombre` varchar(255), `CodigoPostal` varchar(255), `ClienteTelefono` varchar(255), PRIMARY KEY (`ClienteID`)) ENGINE=InnoDB CHARACTER SET UTF8;
+CREATE TABLE `Trabajador` (`TrabajadorID` int(10) NOT NULL AUTO_INCREMENT, `TrabajadorUsuario` varchar(255), `TrabajadorContrasena` varchar(255), `TrabajadorNombre` varchar(255), `TrabajadorCategoria` int(10), PRIMARY KEY (`TrabajadorID`)) ENGINE=InnoDB CHARACTER SET UTF8;
+CREATE TABLE `Problema` (`ProblemaID` int(10) NOT NULL AUTO_INCREMENT, `EvaluacionServicioEvaluacionID` int(10) NOT NULL, `TrabajadorTrabajadorID` int(10) NOT NULL, `ClienteClienteID` int(10) NOT NULL, `ProblemaCategoria` int(10), `ProblemaNota` varchar(255), `ProblemaEstado` int(10), `ProblemaFecha` date, `TrabajadorSolicitado` varchar(255), PRIMARY KEY (`ProblemaID`)) ENGINE=InnoDB CHARACTER SET UTF8;
+CREATE TABLE `EvaluacionServicio` (`EvaluacionID` int(10) NOT NULL AUTO_INCREMENT, `ClienteClienteID` int(10) NOT NULL, `Calificacion` int(10) NOT NULL, `Nota` varchar(255), PRIMARY KEY (`EvaluacionID`)) ENGINE=InnoDB CHARACTER SET UTF8;
+ALTER TABLE `Problema` ADD INDEX `informa` (`ClienteClienteID`), ADD CONSTRAINT `informa` FOREIGN KEY (`ClienteClienteID`) REFERENCES `Cliente` (`ClienteID`);
+ALTER TABLE `Problema` ADD INDEX `resuelve` (`TrabajadorTrabajadorID`), ADD CONSTRAINT `resuelve` FOREIGN KEY (`TrabajadorTrabajadorID`) REFERENCES `Trabajador` (`TrabajadorID`);
+ALTER TABLE `EvaluacionServicio` ADD INDEX `evalua` (`ClienteClienteID`), ADD CONSTRAINT `evalua` FOREIGN KEY (`ClienteClienteID`) REFERENCES `Cliente` (`ClienteID`);
+ALTER TABLE `Problema` ADD INDEX `obtiene` (`EvaluacionServicioEvaluacionID`), ADD CONSTRAINT `obtiene` FOREIGN KEY (`EvaluacionServicioEvaluacionID`) REFERENCES `EvaluacionServicio` (`EvaluacionID`);

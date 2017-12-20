@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="Trabajador" table="`Trabajador`" lazy="false">
+		<id name="trabajadorID" column="`TrabajadorID`" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="trabajadorUsuario" column="`TrabajadorUsuario`" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="trabajadorContrasena" column="`TrabajadorContrasena`" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="trabajadorNombre" column="`TrabajadorNombre`" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="trabajadorCategoria" column="`TrabajadorCategoria`" type="integer" length="10" not-null="false" lazy="false"/>
+		<set name="ORM_Problema" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="`TrabajadorTrabajadorID`" not-null="true"/>
+			<one-to-many class="Problema"/>
+		</set>
+	</class>
+</hibernate-mapping>

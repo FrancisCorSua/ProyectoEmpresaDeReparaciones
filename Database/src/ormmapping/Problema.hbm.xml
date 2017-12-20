@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="Problema" table="`Problema`" lazy="false">
+		<id name="problemaID" column="`ProblemaID`" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<many-to-one name="evaluacion" cascade="lock" column="`EvaluacionServicioEvaluacionID`" class="EvaluacionServicio" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<many-to-one name="trabajador" cascade="lock" column="`TrabajadorTrabajadorID`" class="Trabajador" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<many-to-one name="cliente" cascade="lock" column="`ClienteClienteID`" class="Cliente" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<property name="problemaCategoria" column="`ProblemaCategoria`" type="integer" length="10" not-null="false" lazy="false"/>
+		<property name="problemaNota" column="`ProblemaNota`" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="problemaEstado" column="`ProblemaEstado`" type="integer" length="10" not-null="false" lazy="false"/>
+		<property name="problemaFecha" column="`ProblemaFecha`" type="date" not-null="false" lazy="false"/>
+		<property name="trabajadorSolicitado" column="`TrabajadorSolicitado`" type="string" length="255" not-null="false" lazy="false"/>
+	</class>
+</hibernate-mapping>

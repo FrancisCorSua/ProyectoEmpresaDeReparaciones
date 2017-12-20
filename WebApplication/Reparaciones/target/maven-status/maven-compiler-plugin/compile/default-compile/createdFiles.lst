@@ -1,0 +1,14 @@
+org\miproyecto\reparaciones\Problema.class
+org\miproyecto\reparaciones\service\ClienteFacadeREST.class
+org\miproyecto\reparaciones\service\AbstractFacade.class
+org\miproyecto\reparaciones\Trabajador.class
+org\miproyecto\reparaciones\Cliente_.class
+org\miproyecto\reparaciones\service\ApplicationConfig.class
+org\miproyecto\reparaciones\service\TrabajadorFacadeREST.class
+org\miproyecto\reparaciones\service\ProblemaFacadeREST.class
+org\miproyecto\reparaciones\Evaluacionservicio_.class
+org\miproyecto\reparaciones\Trabajador_.class
+org\miproyecto\reparaciones\Cliente.class
+org\miproyecto\reparaciones\Evaluacionservicio.class
+org\miproyecto\reparaciones\Problema_.class
+org\miproyecto\reparaciones\service\EvaluacionservicioFacadeREST.class
